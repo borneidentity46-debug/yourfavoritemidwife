@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Favorite Midwife | Coach for Conception</title>
+  <style>
+    body {font-family: 'Segoe UI', sans-serif; margin: 0; background: #f8f9fa; color: #333; overflow-x: hidden;}
+    header {text-align: center; padding: 40px 20px; background: linear-gradient(135deg,#b89b5e,#e6d8a7); color: white; position: relative;}
+    header img.logo {width: 120px; animation: float 6s ease-in-out infinite;}
+    @keyframes float {0%{transform:translateY(0);}50%{transform:translateY(-10px);}100%{transform:translateY(0);}}
+    nav a {margin:0 15px; color:white; text-decoration:none; font-weight:500; transition:opacity .3s;}
+    nav a:hover {opacity:.7;}
+    section {padding:60px 20px; max-width:1000px; margin:auto;}
+    h2 {color:#b89b5e;}
+    .services {display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+    .service-card {background:white;padding:20px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.1);transition:transform .3s;}
+    .service-card:hover {transform:translateY(-5px);}
+    button {background:#b89b5e;color:white;border:none;padding:10px 20px;border-radius:5px;cursor:pointer;transition:background .3s;}
+    button:hover {background:#a0854b;}
+    footer {text-align:center;padding:20px;background:#eee;margin-top:40px;}
+    .modal {display:none;position:fixed;z-index:999;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);}
+    .modal-content {background:white;margin:10% auto;padding:20px;border-radius:8px;max-width:600px;animation:fadeIn .5s;}
+    @keyframes fadeIn {from{opacity:0;transform:scale(.95);}to{opacity:1;transform:scale(1);}}
+    .close {float:right;cursor:pointer;color:#888;font-size:20px;}
+    .close:hover {color:black;}
+    .coach-photo {width:200px;border-radius:50%;margin-top:20px;animation:fadeIn 2s;}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="images/logo.jpg" alt="Your Favorite Midwife Logo" class="logo">
+    <h1>Your Favorite Midwife</h1>
+    <p>Coach for Conception</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section id="about">
+    <h2>About the Midwife Coach</h2>
+    <img src="images/midwife.jpg" alt="Midwife Coach" class="coach-photo">
+    <p>At <strong>Your Favorite Midwife</strong>, we specialize in fertility and conception coaching to help couples achieve their dream of parenthood. Our trusted midwife provides guidance using natural, medical, and assisted reproductive methods — all customized to your journey.</p>
+  </section>
+
+  <section id="services">
+    <h2>Coaching Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <h3>Natural Methods</h3>
+        <p>Discover natural ways to enhance fertility through nutrition, timing, and holistic practices.</p>
+        <button onclick="openModal('natural')">Learn More</button>
+      </div>
+      <div class="service-card">
+        <h3>Medical Methods</h3>
+        <p>Understand how medical tests and interventions can support conception.</p>
+        <button onclick="openModal('medical')">Learn More</button>
+      </div>
+      <div class="service-card">
+        <h3>Artificial Methods</h3>
+        <p>Explore assisted reproductive options like IUI, IVF, and surrogacy with expert support.</p>
+        <button onclick="openModal('artificial')">Learn More</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Get Assistance</h2>
+    <p>Select your preferred conception method and request personalized coaching.</p>
+    <form onsubmit="event.preventDefault();alert('Thank you! We will contact you soon.')">
+      <label>Choose Method:</label><br>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>Natural Method</option>
+        <option>Medical Method</option>
+        <option>Artificial Method</option>
+      </select><br><br>
+      <input type="text" placeholder="Your Name" required><br><br>
+      <input type="email" placeholder="Your Email" required><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <footer>© 2025 Your Favorite Midwife. All Rights Reserved.</footer>
+
+  <!-- Modals -->
+  <div id="modal-natural" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('natural')">&times;</span>
+      <h3>Natural Conception Methods</h3>
+      <p>Natural methods include tracking ovulation cycles, improving nutrition, managing stress, and using herbal supplements to enhance reproductive health. This approach focuses on optimizing your body’s natural fertility through balanced hormones and lifestyle changes.</p>
+    </div>
+  </div>
+
+  <div id="modal-medical" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('medical')">&times;</span>
+      <h3>Medical Conception Methods</h3>
+      <p>Medical methods involve diagnostic testing, fertility medications, and procedures like intrauterine insemination (IUI). Our expert guidance helps you understand medical results and navigate fertility treatment plans confidently.</p>
+    </div>
+  </div>
+
+  <div id="modal-artificial" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('artificial')">&times;</span>
+      <h3>Artificial Conception Methods</h3>
+      <p>Artificial methods include assisted reproductive technologies such as IVF and surrogacy. We provide emotional and practical coaching to support couples through every stage of these advanced fertility journeys.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(type){document.getElementById('modal-'+type).style.display='block';}
+    function closeModal(type){document.getElementById('modal-'+type).style.display='none';}
+    window.onclick=function(event){['natural','medical','artificial'].forEach(type=>{let modal=document.getElementById('modal-'+type);if(event.target==modal){modal.style.display='none';}});};
+  </script>
+</body>
+</html>
